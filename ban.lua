@@ -148,13 +148,20 @@ if game.PlaceId == 85896571713843 then
 							end)
 							task.spawn(function()
 								while true do
-									task.wait(1)
+									task.wait(0.5)
 									if not output or not output.Parent or not Path:FindFirstChild(rift.Name) then
 										warn("❌ Rift despawned. Kicking player...")
 										player:Kick("❌ Rift Despawned.\nRejoining...")
 										task.wait(0.25)
 										TeleportService:Teleport(game.PlaceId, player)
 										break
+									end
+									local distance = (root.Position - output.Position).Magnitude
+									if distance <= 15 then
+										local goalCFrame = CFrame.new(output.Position + Vector3.new(0, 5, 0))
+										local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+										local tween = TweenService:Create(root, tweenInfo, { CFrame = goalCFrame })
+										tween:Play()
 									end
 								end
 							end)
