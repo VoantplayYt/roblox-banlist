@@ -136,7 +136,7 @@ if game.PlaceId == 85896571713843 then
 							print(string.format("📍 Closest island to '%s' Output is: %s (%.2f studs away)", rift.Name, closestKey, distance))
 
 							Teleport:FireServer("Teleport", data.Teleport)
-							task.wait(0.5)
+							task.wait(2)
 							tweenToRift(output)
 							task.spawn(function()
 							    while output do
