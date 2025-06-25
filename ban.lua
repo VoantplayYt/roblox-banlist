@@ -156,9 +156,9 @@ if game.PlaceId == 85896571713843 then
 										TeleportService:Teleport(game.PlaceId, player)
 										break
 									end
-									local distance = (root.Position - output.Position).Magnitude
+									local distance = (root.CFrame - output.CFrame).Magnitude
 									if distance <= 15 then
-										local goalCFrame = CFrame.new(output.Position + Vector3.new(0, 5, 0))
+										local goalCFrame = CFrame.new(output.CFrame + Vector3.new(0, 5, 0))
 										local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 										local tween = TweenService:Create(root, tweenInfo, { CFrame = goalCFrame })
 										tween:Play()
