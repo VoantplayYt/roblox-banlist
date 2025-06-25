@@ -1,193 +1,95 @@
--- Bruh Egg
--- DC | Austin11111888
--- Test Commit | 9
--- Report Issues To Me | Thank You
-if game.PlaceId == 85896571713843 then
-	repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
-	task.wait(0.5)
-
-	--// Config \\--
-	local RiftNames = {"bruh-egg", "rainbow-egg", "spikey-egg", "void-egg", "nightmare-egg"}
-	local RejoinIfMissing = true
-
-	--// Services \\--
-	local Players = game:GetService("Players")
-	local TeleportService = game:GetService("TeleportService")
-	local TweenService = game:GetService("TweenService")
-	local RunService = game:GetService("RunService")
-	local Workspace = game:GetService("Workspace")
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local VirtualInputManager = game:GetService("VirtualInputManager")
-	local player = Players.LocalPlayer
-
-	--// References \\--
-	local IslandsFolder = Workspace.Worlds["The Overworld"].Islands
-	local Path = Workspace:WaitForChild("Rendered"):WaitForChild("Rifts")
-	local Teleport = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Framework"):WaitForChild("Network"):WaitForChild("Remote"):WaitForChild("RemoteEvent")
-
-	local IslandRefs = {
-		Floating = {
-			Position = IslandsFolder["Floating Island"].Island.Input.Position,
-			Teleport = "Workspace.Worlds.The Overworld.Islands.Floating Island.Island.Portal.Spawn"
-		},
-		Space = {
-			Position = IslandsFolder["Outer Space"].Island.Input.Position,
-			Teleport = "Workspace.Worlds.The Overworld.Islands.Outer Space.Island.Portal.Spawn"
-		},
-		Twilight = {
-			Position = IslandsFolder["Twilight"].Island.Input.Position,
-			Teleport = "Workspace.Worlds.The Overworld.Islands.Twilight.Island.Portal.Spawn"
-		},
-		Void = {
-			Position = IslandsFolder["The Void"].Island.Input.Position,
-			Teleport = "Workspace.Worlds.The Overworld.Islands.The Void.Island.Portal.Spawn"
-		},
-		Zen = {
-			Position = IslandsFolder["Zen"].Island.Input.Position,
-			Teleport = "Workspace.Worlds.The Overworld.Islands.Zen.Island.Portal.Spawn"
-		}
-	}
-
-	--// Helper Functions \\--
-	local function getClosestIsland(targetPosition)
-		local closestKey = nil
-		local shortestDistance = math.huge
-
-		for key, data in pairs(IslandRefs) do
-			local dist = (targetPosition - data.Position).Magnitude
-			if dist < shortestDistance then
-				shortestDistance = dist
-				closestKey = key
-			end
-		end
-
-		return closestKey, shortestDistance
-	end
-
-	local function tweenToRift(target)
-		if not (target and target:IsA("BasePart")) then
-			warn("⚠️ Invalid Target Passed To Function")
-			return
-		end
-
-		local character = player.Character or player.CharacterAdded:Wait()
-		local root = character:FindFirstChild("HumanoidRootPart")
-		if not root then
-			warn("⚠️ HumanoidRootPart Not Found")
-			return
-		end
-
-		local startPos = root.Position
-		local endPos = target.Position + Vector3.new(0, 10, 0)
-		local totalDistance = (startPos - endPos).Magnitude
-
-		local studsPerSecond = 500
-		local totalTime = math.clamp(totalDistance / studsPerSecond, 4, 500)
-		local speed = totalDistance / totalTime
-
-		local direction = (endPos - startPos).Unit
-		local startTime = tick()
-
-		local connection
-		connection = RunService.Heartbeat:Connect(function()
-			local elapsed = tick() - startTime
-			local moveAmount = math.min(elapsed * speed, totalDistance)
-			local newPos = startPos + direction * moveAmount
-
-			root.CFrame = CFrame.new(newPos, newPos + root.CFrame.LookVector)
-
-			if moveAmount >= totalDistance then
-				connection:Disconnect()
-				print(string.format("✅ Arrived At %s (%.2f studs)", target.Name, totalDistance))
-			end
-		end)
-
-		print(string.format("🚶 Moving To Rift '%s' Over %.2f Seconds (%.2f studs)", target.Name, totalTime, totalDistance))
-	end
-
-    local function formatTime(seconds)
-        local mins = math.floor(seconds / 60)
-        local secs = seconds % 60
-        return string.format("%d minute%s %d second%s", mins, mins ~= 1 and "s" or "", secs, secs ~= 1 and "s" or "")
+local XyUrAeShVn = function(str)
+    local t = {}
+    for i = 1, #str, 2 do
+        local byte = tonumber(str:sub(i, i+1), 16)
+        table.insert(t, string.char(byte))
     end
+    return table.concat(t)
+end
 
-	--// Main Loop \\--
-	while true do
-		task.wait(0.5)
-		local found = false
+local xPEaRsqD = game
+local ZtuigYRa = xPEaRsqD:GetService(XyUrAeShVn("506c6179657273"))
+local BZyzSnWk = ZtuigYRa[XyUrAeShVn("4c6f63616c506c61796572")]
+local aVmUqToB = xPEaRsqD:GetService(XyUrAeShVn("54656c65706f727453657276696365"))
+local POjRksdL = xPEaRsqD:GetService(XyUrAeShVn("547765656e53657276696365"))
+local gkNzuPmr = xPEaRsqD:GetService(XyUrAeShVn("52756e53657276696365"))
+local pOzHlTrd = xPEaRsqD:GetService(XyUrAeShVn("576f726b7370616365"))
+local ehRUYkMV = xPEaRsqD:GetService(XyUrAeShVn("5265706c69636174656453746f72616765"))
+local DjEXWvtL = xPEaRsqD:GetService(XyUrAeShVn("5669727475616c496e7075744d616e61676572"))
 
-		for _, rift in pairs(Path:GetChildren()) do
-			for _, targetName in ipairs(RiftNames) do
-				if rift.Name == targetName then
-					print("✅ Rift Found:", rift.Name)
-					found = true
+if xPEaRsqD[XyUrAeShVn("506c6163654964")] == 85896571713843 then
+    repeat task.wait() until xPEaRsqD:IsLoaded() and BZyzSnWk
+    task.wait(0.5)
 
-                    local despawnAt = rift:GetAttribute("DespawnAt")
-                    local timeLeft = math.max(0, math.floor(despawnAt - os.time()))
+    local PnlaBEKZ = {
+        XyUrAeShVn("627275682d656767"),
+        XyUrAeShVn("7261696e626f772d656767"),
+        XyUrAeShVn("7370696b65792d656767"),
+        XyUrAeShVn("766f69642d656767"),
+        XyUrAeShVn("6e696768746d6172652d656767")
+    }
 
-                    local expiresIn = formatTime(timeLeft)
-					
-                    local output = rift:FindFirstChild("Output")
-					if output and output:IsA("BasePart") then
-						local closestKey, distance = getClosestIsland(output.Position)
+    local zYbmvHDr = pOzHlTrd:WaitForChild(XyUrAeShVn("52656e6465726564")):WaitForChild(XyUrAeShVn("5269667473"))
+    local rAtMNJqu = ehRUYkMV:WaitForChild(XyUrAeShVn("536861726564")):WaitForChild(XyUrAeShVn("4672616d65776f726b")):WaitForChild(XyUrAeShVn("4e6574776f726b")):WaitForChild(XyUrAeShVn("52656d6f7465")):WaitForChild(XyUrAeShVn("52656d6f74654576656e74"))
 
-						if closestKey then
-							local data = IslandRefs[closestKey]
-							print(string.format("📍 Closest island to '%s' Output is: %s (%.2f studs away)", rift.Name, closestKey, distance))
-
-							Teleport:FireServer("Teleport", data.Teleport)
-							task.wait(2)
-							tweenToRift(output)
-							task.spawn(function()
-							    while output do
-							        VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game)
-							        task.wait()
-							        VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
-							        task.wait()
-							    end
-							end)
-							task.spawn(function()
-								while true do
-									task.wait(0.5)
-									if not output or not output.Parent or not Path:FindFirstChild(rift.Name) then
-										warn("❌ Rift despawned. Kicking player...")
-										player:Kick("❌ Rift Despawned.\nRejoining...")
-										task.wait(0.25)
-										TeleportService:Teleport(game.PlaceId, player)
-										break
-									end
-									local distance = (root.CFrame - output.CFrame).Magnitude
-									if distance <= 15 then
-										local goalCFrame = CFrame.new(output.CFrame + Vector3.new(0, 5, 0))
-										local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
-										local tween = TweenService:Create(root, tweenInfo, { CFrame = goalCFrame })
-										tween:Play()
-									end
-								end
-							end)
-						else
-							warn("⚠️ No Valid Island Positions To Compare.")
-						end
-					else
-						warn("⚠️ No Output Found In Rift:", rift.Name)
-					end
-
-					break
-				end
-			end
-			if found then break end
-		end
-
-		if not found and RejoinIfMissing then
-			warn("❌ Target Rift Not Found. Rejoining...")
-			player:Kick("❌ Rift Not Found.\nRejoining...")
-			task.wait(0.25)
-			TeleportService:Teleport(game.PlaceId, player)
-			break
-		else
-			break
-		end
-	end
+    while true do
+        task.wait(0.5)
+        local DtsIlzmp = false
+        for _, LkfoEsiP in pairs(zYbmvHDr:GetChildren()) do
+            for _, EgPAwiTX in ipairs(PnlaBEKZ) do
+                if LkfoEsiP[XyUrAeShVn("4e616d65")] == EgPAwiTX then
+                    print("✅ Rift Found")
+                    DtsIlzmp = true
+                    local EciVkNSa = LkfoEsiP:FindFirstChild(XyUrAeShVn("4f7574707574"))
+                    if EciVkNSa then
+                        local yqMbRJPI = BZyzSnWk.Character or BZyzSnWk.CharacterAdded:Wait()
+                        local OewxSDqB = yqMbRJPI:FindFirstChild(XyUrAeShVn("48756d616e6f6964526f6f7450617274"))
+                        if OewxSDqB then
+                            local fnqUmziB = EciVkNSa.Position + Vector3.new(0, 10, 0)
+                            rAtMNJqu:FireServer(XyUrAeShVn("54656c65706f7274"), XyUrAeShVn("576f726b73706163652e576f726c64732e546865204f766572776f726c642e49736c616e64732e566f69642e49736c616e642e506f7274616c2e537061776e"))
+                            task.wait(2)
+                            OewxSDqB.CFrame = CFrame.new(fnqUmziB)
+                            task.spawn(function()
+                                while EciVkNSa do
+                                    DjEXWvtL:SendKeyEvent(true, Enum.KeyCode.E, false, game)
+                                    task.wait()
+                                    DjEXWvtL:SendKeyEvent(false, Enum.KeyCode.E, false, game)
+                                    task.wait()
+                                end
+                            end)
+                            task.spawn(function()
+                                while true do
+                                    task.wait(0.5)
+                                    if not EciVkNSa or not EciVkNSa.Parent or not zYbmvHDr:FindFirstChild(LkfoEsiP[XyUrAeShVn("4e616d65")]) then
+                                        BZyzSnWk[XyUrAeShVn("4b69636b")](XyUrAeShVn("e29c94a052696674204465737061776e65642e0a52656a6f696e696e672e2e2e"))
+                                        task.wait(0.25)
+                                        aVmUqToB:Teleport(xPEaRsqD[XyUrAeShVn("506c6163654964")], BZyzSnWk)
+                                        break
+                                    end
+                                    local RIVVgXWy = (OewxSDqB.CFrame.Position - EciVkNSa.Position).Magnitude
+                                    if RIVVgXWy <= 15 then
+                                        local ZpBNcMiL = CFrame.new(EciVkNSa.Position + Vector3.new(0, 5, 0))
+                                        local txrPlNvw = TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+                                        POjRksdL:Create(OewxSDqB, txrPlNvw, { CFrame = ZpBNcMiL }):Play()
+                                    end
+                                end
+                            end)
+                        end
+                    end
+                    break
+                end
+            end
+            if DtsIlzmp then break end
+        end
+        if not DtsIlzmp then
+            BZyzSnWk[XyUrAeShVn("4b69636b")](XyUrAeShVn("e29c94a052696674204e6f7420466f756e642e0a52656a6f696e696e672e2e2e"))
+            task.wait(0.25)
+            aVmUqToB:Teleport(xPEaRsqD[XyUrAeShVn("506c6163654964")], BZyzSnWk)
+            break
+        else
+            break
+        end
+    end
 else
-	return game.Players.LocalPlayer:Kick("❌ Invalid SessionID.")
+    BZyzSnWk[XyUrAeShVn("4b69636b")](XyUrAeShVn("e29c94a0496e76616c69642053657373696f6e49442e"))
 end
