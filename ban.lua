@@ -1,6 +1,6 @@
 -- Bruh Egg
 -- DC | Austin11111888
--- Test Commit | 5
+-- Test Commit | 9
 -- Report Issues To Me | Thank You
 if game.PlaceId == 85896571713843 then
 	repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
