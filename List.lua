@@ -8,7 +8,7 @@ if game.PlaceId == 85896571713843 then
 	task.wait(0.5)
 
 	--// Config \\--
-	local RiftNames = {"bruh-egg", "rainbow-egg", "spikey-egg", "void-egg", "nightmare-egg"}
+	local RiftNames = {"bruh-egg"}
 	local RejoinIfMissing = true
 
 	--// Services \\--
