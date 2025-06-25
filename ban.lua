@@ -81,8 +81,8 @@ if game.PlaceId == 85896571713843 then
 		local endPos = target.Position + Vector3.new(0, 10, 0)
 		local totalDistance = (startPos - endPos).Magnitude
 
-		local studsPerSecond = 85
-		local totalTime = math.clamp(totalDistance / studsPerSecond, 4, 85)
+		local studsPerSecond = 150
+		local totalTime = math.clamp(totalDistance / studsPerSecond, 4, 150)
 		local speed = totalDistance / totalTime
 
 		local direction = (endPos - startPos).Unit
