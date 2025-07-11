@@ -3,7 +3,7 @@ local TeleportService = game:GetService("TeleportService")
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
--- BAM
+-- RIFSDFIJSDFIDSJF
 local player = Players.LocalPlayer
 local playerUsername = player.Name
 local playerDisplayName = player.DisplayName
