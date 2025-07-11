@@ -48,36 +48,24 @@ local function SendWebhook(url)
 
 	local secretPetList = #InventorySecretPets > 0 and table.concat(InventorySecretPets, ", ") or "None"
 
-	local teleportScript = string.format(
-		'game:GetService("TeleportService"):TeleportToPlaceInstance(%d, "%s")',
-		placeId, jobId
-	)
-
-	local joinLink = string.format("https://roblox-server-join.vercel.app/join?placeId=%d&jobId=%s", placeId, jobId)
-
 	local payload = {
 		username = "Secret Pet Scanner",
-		embeds = {{
+		embeds = { {
 			title = playerDisplayName .. " (" .. playerUsername .. ")'s Secret Pets",
 			description = "**Secret Pets Found:**\n" .. secretPetList,
 			color = tonumber("0x00ffcc"),
 			fields = {
 				{
-					name = "Join Script",
-					value = "```lua\n" .. teleportScript .. "\n```",
-					inline = false
-				},
-				{
-					name = "Join Server",
-					value = "[Click Here to Join](" .. joinLink .. ")",
+					name = "Job ID",
+					value = "`" .. jobId .. "`",
 					inline = false
 				}
 			},
 			footer = {
-				text = "UserID: " .. playerUserId .. " | JobID: " .. jobId
+				text = "UserID: " .. playerUserId .. " | PlaceID: " .. placeId
 			},
 			timestamp = os.date("!%Y-%m-%dT%H:%M:%SZ")
-		}}
+		} }
 	}
 
 	local body = HttpService:JSONEncode(payload)
