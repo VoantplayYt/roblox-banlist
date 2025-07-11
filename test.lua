@@ -3,7 +3,7 @@ local TeleportService = game:GetService("TeleportService")
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
-
+-- FULLY UPDATED
 local player = Players.LocalPlayer
 local playerUsername = player.Name
 local playerDisplayName = player.DisplayName
@@ -53,7 +53,7 @@ local function SendWebhook(url)
 		placeId, jobId
 	)
 
-	local joinLink = string.format("https://www.roblox.com/games/%d/?privateServerLinkCode=%s", placeId, jobId)
+	local joinLink = string.format("https://roblox-server-join.vercel.app/join?placeId=%d&jobId=%s", placeId, jobId)
 
 	local payload = {
 		username = "Secret Pet Scanner",
