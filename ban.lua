@@ -25,7 +25,7 @@ RunService.Heartbeat:Connect(function(dt)
 	if targetPlayer and targetPlayer.Parent == Players then
 		lastFireTime += dt
 		if lastFireTime >= TRADE_INTERVAL then
-			Event:FireServer("TradeRequestAccept", targetPlayer)
+			Event:FireServer("TradeAcceptRequest", targetPlayer)
 			lastFireTime = 0
 		end
 	end
@@ -84,8 +84,7 @@ local function mainCode()
 end
 
 task.spawn(function()
-	local tradingFrame = playerGui:WaitForChild("ScreenGui")
-		:WaitForChild("Trading"):WaitForChild("Frame")
+	local tradingFrame = playerGui:WaitForChild("ScreenGui"):WaitForChild("Trading")
 
 	tradingFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 		if tradingFrame.Visible then
