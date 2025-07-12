@@ -8,7 +8,7 @@ local playerGui = player:WaitForChild("PlayerGui")
 local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
 
 -- Config
-local waitedPlayer = "Snatcharelli" -- Replace with the exact target name
+local waitedPlayer = "geeAqbG9nSC7tRh69Rnz" -- Replace with the exact target name
 local TRADE_INTERVAL = 5
 
 -- Wait for the player to join (if not already in game)
