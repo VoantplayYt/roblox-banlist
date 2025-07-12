@@ -100,7 +100,6 @@ local function refreshSecretPets()
 
 					if secretTag and secretTag:IsA("GuiObject") then
 						local isVisible = secretTag.Visible
-						print(child.Name .. " | " .. tostring(isVisible))
 						if isVisible and not table.find(InventorySecretPets, child.Name) then
 							table.insert(InventorySecretPets, child.Name)
 						end
