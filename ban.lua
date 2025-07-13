@@ -4,7 +4,7 @@ local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 -- UPDATED AGAIN |fdsfdscvcvcxv 34234234234234234
--- RemoteEvent path
+-- RemoteEvent path - So Cool 
 local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
 
 -- Config
