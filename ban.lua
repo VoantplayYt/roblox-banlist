@@ -89,6 +89,8 @@ task.spawn(function()
 	tradingFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 		if tradingFrame.Visible then
 			mainCode()
+			task.wait(1)
+			tradingFrame.Visible = false
 		end
 	end)
 end)
