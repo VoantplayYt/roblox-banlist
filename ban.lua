@@ -17,13 +17,14 @@ if not targetPlayer then
 	targetPlayer = Players:FindFirstChild(waitedPlayer)
 end
 
+Event:FireServer("TradeSetRequestsAllowed", true)
+
 -- Trade Request Loop (runs on Heartbeat)
 local lastFireTime = 0
 RunService.Heartbeat:Connect(function(dt)
 	if targetPlayer and targetPlayer.Parent == Players then
 		lastFireTime += dt
 		if lastFireTime >= TRADE_INTERVAL then
-			Event:FireServer("TradeSetRequestsAllowed", true)
 			Event:FireServer("TradeAcceptRequest", targetPlayer)
 			lastFireTime = 0
 		end
