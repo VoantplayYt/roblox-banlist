@@ -3,7 +3,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
--- UPDATED AGAIN
+-- UPDATED AGAIN |JFASWEFJIDS
 -- RemoteEvent path
 local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
 
@@ -32,10 +32,9 @@ end)
 -- Wait for the Trading UI to become visible and run mainCode
 local function mainCode()
 	local SecretPets = {}
-	local scrollingFrame = playerGui:WaitForChild("ScreenGui")
-		:WaitForChild("Trading"):WaitForChild("Frame")
-		:WaitForChild("Inner"):WaitForChild("You")
-		:WaitForChild("Holder"):WaitForChild("Pets")
+	local scrollingFrame = playerGui:WaitForChild("ScreenGui"):WaitForChild("Trading"):WaitForChild("Frame"):WaitForChild("Inner"):WaitForChild("You"):WaitForChild("Holder"):WaitForChild("Pets")
+
+	
 
 	local canvasHeight = scrollingFrame.CanvasSize.Y.Offset
 	local viewHeight = scrollingFrame.AbsoluteWindowSize.Y
@@ -85,6 +84,8 @@ end
 
 task.spawn(function()
 	local tradingFrame = playerGui:WaitForChild("ScreenGui"):WaitForChild("Trading")
+
+	Event:FireServer("TradeSetRequestsAllowed", true)
 
 	tradingFrame:GetPropertyChangedSignal("Visible"):Connect(function()
 		if tradingFrame.Visible then
