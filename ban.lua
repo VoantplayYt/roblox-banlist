@@ -11,10 +11,10 @@ local Event = ReplicatedStorage.Shared.Framework.Network.Remote.RemoteEvent
 local waitedPlayer = "geeAqbG9nSC7tRh69Rnz" -- Replace with the exact target name
 local TRADE_INTERVAL = 5
 
--- Wait for the player to join (if not already in game)
 local targetPlayer = Players:FindFirstChild(waitedPlayer)
 if not targetPlayer then
-	targetPlayer = Players:WaitForChild(waitedPlayer)
+	repeat task.wait(1) until Players:FindFirstChild(waitedPlayer)
+	targetPlayer = Players:FindFirstChild(waitedPlayer)
 end
 
 -- Trade Request Loop (runs on Heartbeat)
